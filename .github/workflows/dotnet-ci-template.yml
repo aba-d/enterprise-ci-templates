@@ -61,3 +61,5 @@ jobs:
     - name: Build Docker image
       if: ${{ inputs.dockerfile-path != '' && inputs.image-name != '' }}
       run: |
+        docker build -t ghcr.io/${{ github.repository_owner }}/${{ inputs.image-name }}:latest \
+          --file ${{ inputs.dockerfile-path }} .
