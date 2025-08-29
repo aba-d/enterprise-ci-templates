@@ -14,25 +14,24 @@ on:
         required: false
         type: string
         default: ''
-      aws-region:
-        required: false
-        type: string
-        default: 'us-east-2'   # Ohio region
-      ecr-repo:
-        required: false
-        type: string
-        default: 'nonprodimagerepository'
+    #   aws-region:
+    #     required: false
+    #     type: string
+    #     default: 'us-east-2'   # Ohio region
+    #   ecr-repo:
+    #     required: false
+    #     type: string
+    #     default: 'nonprodimagerepository'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write       # ✅ Needed for OIDC with AWS
-      contents: read
-      packages: write
       security-events: write
       actions: read
-
+      contents: read
+      packages: write
+      id-token: write       # ✅ Needed for OIDC with AWS
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
