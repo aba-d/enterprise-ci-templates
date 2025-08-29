@@ -1,0 +1,38 @@
+name: ECR Reusable CI/CD Pipeline
+
+on:
+  workflow_call:
+    inputs:
+      project-path:
+        required: true
+        type: string
+      dockerfile-path:
+        required: false
+        type: string
+        default: ''
+      image-name:
+        required: false
+        type: string
+        default: ''
+      aws-region:
+        required: false
+        type: string
+        default: 'us-east-2'   # Ohio region
+      ecr-repo:
+        required: false
+        type: string
+        default: 'nonprodimagerepository'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write       # ✅ Needed for OIDC with AWS
+      contents: read
+      packages: write
+      security-events: write
+      actions: read
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
