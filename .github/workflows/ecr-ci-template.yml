@@ -65,7 +65,7 @@ jobs:
       if: ${{ inputs.dockerfile-path != '' && inputs.image-name != '' && inputs.ecr-repo != '' }}
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: arn:aws:iam::707733857215:role/GitHubActionsECRPushRole
+        role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsECRPushRole
         aws-region: ${{ inputs.aws-region }}
 
     # ✅ Login to Amazon ECR
