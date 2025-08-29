@@ -21,7 +21,7 @@ on:
       ecr-repo:
         required: false
         type: string
-        default: ''
+        default: 'nonprodimagerepository'
 
 jobs:
   build:
